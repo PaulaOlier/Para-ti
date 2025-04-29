@@ -19,6 +19,13 @@ function siguiente(num) {
   document.getElementById("seccion" + num).style.display = "block";
 
   if (num === 1) iniciarLaberinto();
+  // Mostrar u ocultar teclas según la sección
+  const teclas = document.getElementById("teclas");
+  if (num === 1) {
+    teclas.style.display = "block";
+   } else {
+    teclas.style.display = "none";
+   }
 }
 
 function mostrarMensaje() {
