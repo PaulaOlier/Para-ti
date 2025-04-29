@@ -18,9 +18,7 @@ function siguiente(num) {
   }
   document.getElementById("seccion" + num).style.display = "block";
 
-  if (num === 1) {
-    iniciarLaberinto();
-  }
+  if (num === 1) iniciarLaberinto();
 }
 
 function mostrarMensaje() {
@@ -42,43 +40,44 @@ const mapa = [
 ];
 
 let jugador = { x: 0, y: 0 };
+let ctx;
+
+function dibujar() {
+  for (let y = 0; y < 10; y++) {
+    for (let x = 0; x < 16; x++) {
+      if (mapa[y][x] === 1) {
+        ctx.fillStyle = "black";
+      } else if (mapa[y][x] === 2) {
+        ctx.fillStyle = "green";
+      } else {
+        ctx.fillStyle = "white";
+      }
+      ctx.fillRect(x * 20, y * 20, 20, 20);
+      ctx.strokeRect(x * 20, y * 20, 20, 20);
+    }
+  }
+
+  ctx.fillStyle = "blue";
+  ctx.fillRect(jugador.x * 20, jugador.y * 20, 20, 20);
+}
+
+function mover(dx, dy) {
+  const nx = jugador.x + dx;
+  const ny = jugador.y + dy;
+  if (nx >= 0 && nx < 16 && ny >= 0 && ny < 10 && mapa[ny][nx] !== 1) {
+    jugador.x = nx;
+    jugador.y = ny;
+    if (mapa[ny][nx] === 2) {
+      document.getElementById("laberinto-mensaje").textContent = "¡Que tesoo! jaja";
+      document.getElementById("img-laberinto").style.display = "block";
+    }
+  }
+  dibujar();
+}
 
 function iniciarLaberinto() {
   const canvas = document.getElementById("laberinto");
-  const ctx = canvas.getContext("2d");
-
-  function dibujar() {
-    for (let y = 0; y < 10; y++) {
-      for (let x = 0; x < 16; x++) {
-        if (mapa[y][x] === 1) {
-          ctx.fillStyle = "black";
-        } else if (mapa[y][x] === 2) {
-          ctx.fillStyle = "green";
-        } else {
-          ctx.fillStyle = "white";
-        }
-        ctx.fillRect(x * 20, y * 20, 20, 20);
-        ctx.strokeRect(x * 20, y * 20, 20, 20);
-      }
-    }
-
-    ctx.fillStyle = "blue";
-    ctx.fillRect(jugador.x * 20, jugador.y * 20, 20, 20);
-  }
-
-  function mover(dx, dy) {
-    const nx = jugador.x + dx;
-    const ny = jugador.y + dy;
-    if (nx >= 0 && nx < 16 && ny >= 0 && ny < 10 && mapa[ny][nx] !== 1) {
-      jugador.x = nx;
-      jugador.y = ny;
-      if (mapa[ny][nx] === 2) {
-        document.getElementById("laberinto-mensaje").textContent = "¡Que tesooo, jaja!";
-        document.getElementById("img-laberinto").style.display = "block";
-      }
-    }
-    dibujar();
-  }
+  ctx = canvas.getContext("2d");
 
   document.addEventListener("keydown", (e) => {
     switch (e.key) {
