@@ -18,14 +18,14 @@ function siguiente(num) {
   }
   document.getElementById("seccion" + num).style.display = "block";
 
-  if (num === 1) iniciarLaberinto();
   // Mostrar u ocultar teclas según la sección
   const teclas = document.getElementById("teclas");
   if (num === 1) {
     teclas.style.display = "block";
-   } else {
+    iniciarLaberinto(); // <- importante si quieres que el laberinto se dibuje cada vez que entras
+  } else {
     teclas.style.display = "none";
-   }
+  }
 }
 
 function mostrarMensaje() {
