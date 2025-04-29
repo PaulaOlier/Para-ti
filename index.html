@@ -27,20 +27,27 @@
     </div>
   
     <!-- Sección 1: Laberinto -->
-    <div class="diapositiva" id="seccion1">
-      <h2>1. Llega al final!</h2>
-      <canvas id="laberinto" width="320" height="320"></canvas>
-      <p id="laberinto-mensaje"></p>
-      <img id="img-laberinto" src="imagenes\carta.png" style="display:none; width:200px;"/>
-      <button onclick="siguiente(2)">Siguiente</button>
-      <div id="controles-movimiento" style="text-align: center; margin-top: 10px;">
-        <button onclick="mover(0, -1)">⬆️</button><br>
-        <button onclick="mover(-1, 0)">⬅️</button>
-        <button onclick="mover(1, 0)">➡️</button><br>
-        <button onclick="mover(0, 1)">⬇️</button>
-      </div>
-    </div>
-    
+    <div id="seccion1" style="display: none;">
+        <canvas id="laberinto" width="320" height="200"></canvas>
+        <p id="laberinto-mensaje"></p>
+        <img id="img-laberinto" src="imagenes/carta.png" style="display: none; width: 100px;">
+        
+        <!-- Controles táctiles solo visibles en esta sección -->
+        <div id="teclas" style="display: none; margin-top: 20px;">
+            <div style="text-align: center;">
+            <button onclick="mover(0, -1)">⬆️</button>
+            </div>
+            <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+            <button onclick="mover(-1, 0)">⬅️</button>
+            <button onclick="mover(1, 0)">➡️</button>
+            </div>
+            <div style="text-align: center; margin-top: 10px;">
+            <button onclick="mover(0, 1)">⬇️</button>
+            </div>
+        </div>
+        </div>
+      
+      
     
 
     <!-- Sección 2: Mensaje personalizado -->
