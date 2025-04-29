@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para el niño de mis ojos</title>
+  <link rel="stylesheet" href="estilos.css"/>
+</head>
+<body>
+  <audio id="musica" src="musica\cancion.mp3" autoplay loop></audio>
+
+  <!-- LOGIN -->
+  <div id="login">
+    <h2>Ingresa tu nombre</h2>
+    <input type="text" id="username" placeholder="Tu nombre"/>
+    <button onclick="validarUsuario()">Entrar</button>
+  </div>
+
+  <!-- SECCIONES -->
+  <div id="secciones" style="display:none;">
+    <!-- Sección 0: Mensaje inicial personalizado -->
+    <div class="diapositiva" id="seccion0">
+        <h2>¡Hola, mi niño hermoso! 💖</h2>
+        <p>Esta es una pequeña sorpresa hecha con mucho amor y un poco extraña porque me dio un ataque de ingeniera. Espero que te haga feliz, tanto como tú me haces a mi.</p>
+        <p>Gracias por ser tan especial. Ahora sí, comencemos...</p>
+        <button onclick="siguiente(1)">Comenzar</button>
+    </div>
+  
+    <!-- Sección 1: Laberinto -->
+    <div class="diapositiva" id="seccion1">
+      <h2>1. Llega al final!</h2>
+      <canvas id="laberinto" width="320" height="320"></canvas>
+      <p id="laberinto-mensaje"></p>
+      <img id="img-laberinto" src="imagenes\carta.png" style="display:none; width:200px;"/>
+      <button onclick="siguiente(2)">Siguiente</button>
+    </div>
+
+    <!-- Sección 2: Mensaje personalizado -->
+    <div class="diapositiva" id="seccion2" style="display:none;">
+      <h2>2. Haz clic en el botón, dah</h2>
+      <button onclick="mostrarMensaje()">¡Haz clic aquí!</button>
+      <button onclick="siguiente(3)">Siguiente</button>
+    </div>
+
+    <!-- Sección 3: Cuestionario -->
+    <div class="diapositiva" id="seccion3" style="display:none;">
+      <h2>3. ¿Si me conoces?</h2>
+      <form id="quiz">
+        <p>1. ¿Cuál de estos es mi color favorito?<br>
+          <label><input type="checkbox" name="q1" value="cafe"> Cafe</label><br>
+          <label><input type="checkbox" name="q1" value="blanco"> Blanco</label><br>
+          <label><input type="checkbox" name="q1" value="rosado"> Rosado</label><br>
+          <label><input type="checkbox" name="q1" value="morado"> Morado</label>
+        </p>
+        <p>2. ¿Qué animal sería si pudiera ser uno?<br>
+          <label><input type="checkbox" name="q2" value="tigre"> Tigre</label><br>
+          <label><input type="checkbox" name="q2" value="conejo"> Conejo</label><br>
+          <label><input type="checkbox" name="q2" value="gato"> Gato</label><br>
+          <label><input type="checkbox" name="q2" value="nutria"> Nutria</label>
+        </p>
+        <p>3. ¿Cúando es mi cumpleaños?<br>
+            <label><input type="checkbox" name="q3" value="2 de octubre"> 2 de octubre</label><br>
+            <label><input type="checkbox" name="q3" value="3 de octubre"> 3 de octubre</label><br>
+            <label><input type="checkbox" name="q3" value="5 de octubre"> 3 de octubre</label><br>
+          </p>
+        <button type="button" onclick="verificarQuiz()">Enviar</button>
+      </form>
+      <img id="img-quiz" src="imagenes\certificado.png" style="display:none; width:200px;"/>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
