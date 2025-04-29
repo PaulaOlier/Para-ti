@@ -13,20 +13,23 @@ function validarUsuario() {
 }
 
 function siguiente(num) {
-  for (let i = 0; i <= 3; i++) {
-    document.getElementById("seccion" + i).style.display = "none";
+    for (let i = 0; i <= 3; i++) {
+      document.getElementById("seccion" + i).style.display = "none";
+    }
+    document.getElementById("seccion" + num).style.display = "block";
+  
+    // Mostrar controles solo en el laberinto (sección 1)
+    const teclas = document.getElementById("teclas");
+    if (num === 1) {
+      teclas.style.display = "block";
+      setTimeout(() => {
+        iniciarLaberinto(); // Llamar cuando el canvas ya está visible
+      }, 100); // Pequeño retraso para asegurar que el DOM se actualice
+    } else {
+      teclas.style.display = "none";
+    }
   }
-  document.getElementById("seccion" + num).style.display = "block";
-
-  // Mostrar u ocultar teclas según la sección
-  const teclas = document.getElementById("teclas");
-  if (num === 1) {
-    teclas.style.display = "block";
-    iniciarLaberinto(); // <- importante si quieres que el laberinto se dibuje cada vez que entras
-  } else {
-    teclas.style.display = "none";
-  }
-}
+  
 
 function mostrarMensaje() {
   alert("Te amo con cada parte de mi incluso con las que estoy aprendiendo a sanar y construir. Eres mi todo. Te quiero y te amo, ADMV 🤍✨");
