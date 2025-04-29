@@ -26,12 +26,14 @@
         <button onclick="siguiente(1)">Comenzar</button>
     </div>
   
+   
     <!-- Sección 1: Laberinto -->
-    <div id="seccion1" style="display: none;">
+    <div class= 'diapositiva' id="seccion1" style="display: none;">
+        <h2>1. Llega hasta el final!</h2>
         <canvas id="laberinto" width="320" height="200"></canvas>
         <p id="laberinto-mensaje"></p>
         <img id="img-laberinto" src="imagenes/carta.png" style="display: none; width: 100px;">
-        
+        <button onclick="siguiente(2)">Siguiente</button>
         <!-- Controles táctiles solo visibles en esta sección -->
         <div id="teclas" style="display: none; margin-top: 20px;">
             <div style="text-align: center;">
